@@ -1,108 +1,152 @@
-;Add this initialization Code at the beginning of your program
-;data initialization. 10 random no (4 byte each stored starting from address 0x2000h). These numbers will be
-;randomly changed to test the correctness of your program
-;Put your name and ID here. Student1 name, student1 ID. ….
-;StudentN name, StudentN ID
-
-mov r0,#0x11000000
-mov r1,#0x00110000
-mov r2,#0x00001100
-mov r3,#0x00000011
-add r0, r0, r1
-add r0, r0, r2
-add r0, r0, r3
-mov r8,#0x2000
-str r0, [r8]
-
-; move r0,#0x22223333
- mov r0,#0x22000000
- mov r1,#0x00220000
- mov r2,#0x00003300
- mov r3,#0x00000033
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#4] 
-
-; move r0,#0x31111111
- mov r0,#0x31000000
- mov r1,#0x00110000
- mov r2,#0x00001100
- mov r3,#0x00000011
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#8] 
-
-; move r0,#0x42223333
- mov r0,#0x42000000
- mov r1,#0x00220000
- mov r2,#0x00003300
- mov r3,#0x00000033
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#12] 
-
-; move r0,#0x51111111
- mov r0,#0x51000000
- mov r1,#0x00110000
- mov r2,#0x00001100
- mov r3,#0x00000011
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#8]
- str r0, [r8,#16] 
-
-; move r0,#0x62223333
- mov r0,#0x62000000
- mov r1,#0x00220000
- mov r2,#0x00003300
- mov r3,#0x00000033
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#12]
- str r0, [r8,#20
-
-; move r0,#0x71111111
- mov r0,#0x71000000
- mov r1,#0x00110000
- mov r2,#0x00001100
- mov r3,#0x00000011
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#24] 
-
-; move r0,#0x82223333
- mov r0,#0x82000000
- mov r1,#0x00220000
- mov r2,#0x00003300
- mov r3,#0x00000033
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#28] 
-
-; move r0,#0x91111111
- mov r0,#0x91000000
- mov r1,#0x00110000
- mov r2,#0x00001100
- mov r3,#0x00000011
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#32] 
-
-; move r0,#0xA2223333
- mov r0,#0xA2000000
- mov r1,#0x00220000
- mov r2,#0x00003300
- mov r3,#0x00000033
- add r0, r0, r1
- add r0, r0, r2
- add r0, r0, r3
- str r0, [r8,#36] 
-
+		;Add		this initialization Code at the beginning of your program
+		;data	initialization. 10 random number (4 byte each stored starting from address 0x2000h). These numbers will be
+		;randomly	changed to test the correctness of your program
+		;Put		your name and ID here. Student1 name, student1 ID. â€¦.
+		;StudentN	name, StudentN ID
+		
+		mov		r0,#0x11000000
+		mov		r1,#0x00110000
+		mov		r2,#0x00001100
+		mov		r3,#0x00000011
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		mov		r8,#0x2000
+		str		r0, [r8]
+		
+		;		move r0,#0x22223333
+		mov		r0,#0x22000000
+		mov		r1,#0x00220000
+		mov		r2,#0x00003300
+		mov		r3,#0x00000033
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#4]
+		
+		;		move r0,#0x31111111
+		mov		r0,#0x31000000
+		mov		r1,#0x00110000
+		mov		r2,#0x00001100
+		mov		r3,#0x00000011
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#8]
+		
+		;		move r0,#0x42223333
+		mov		r0,#0x42000000
+		mov		r1,#0x00220000
+		mov		r2,#0x00003300
+		mov		r3,#0x00000033
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#12]
+		
+		;		move r0,#0x51111111
+		mov		r0,#0x51000000
+		mov		r1,#0x00110000
+		mov		r2,#0x00001100
+		mov		r3,#0x00000011
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#8]
+		str		r0, [r8,#16]
+		
+		;		move r0,#0x62223333
+		mov		r0,#0x62000000
+		mov		r1,#0x00220000
+		mov		r2,#0x00003300
+		mov		r3,#0x00000033
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#12]
+		str		r0, [r8,#20]
+		
+		;		move r0,#0x71111111
+		mov		r0,#0x71000000
+		mov		r1,#0x00110000
+		mov		r2,#0x00001100
+		mov		r3,#0x00000011
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#24]
+		
+		;		move r0,#0x82223333
+		mov		r0,#0x82000000
+		mov		r1,#0x00220000
+		mov		r2,#0x00003300
+		mov		r3,#0x00000033
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#28]
+		
+		;		move r0,#0x91111111
+		mov		r0,#0x91000000
+		mov		r1,#0x00110000
+		mov		r2,#0x00001100
+		mov		r3,#0x00000011
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#32]
+		
+		;		move r0,#0xA2223333
+		mov		r0,#0xA2000000
+		mov		r1,#0x00220000
+		mov		r2,#0x00003300
+		mov		r3,#0x00000033
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#36]
+		
+		
+		;-----------------------------
+		mov		r9,#10        ; amount of numbers to loop through (10 numbers,so 10 times)
+		mov		r8,#0x2000    ; address of numbers
+		LDR		r0, [r8]      ; loads the first number into r0
+		MOV		r1, r0        ; Set max (r1) = first number
+		MOV		r2, r0        ; Set min (r2) = first number
+		MOV		r3, #0        ; r3 keeps track of memory offset, (+4 after each loop)
+		
+		
+LoopCheck
+		CMP		r9, #0        ; Check If the loopcounter, r9 = 0
+		BEQ		Done          ; If yes, jump to end
+		
+		LDR		r4, [r8, r3]  ; Read number from address = base + offset
+		
+		
+		CMP		r4, r1        ; Is new number > current max?
+		BLS		SkipMax       ; If no, skip updating max 
+		MOV		r1, r4        ; If yes, update max r1 value
+		
+SkipMax
+		CMP		r4, r2        ; Is new number < current min?
+		BHS		SkipMin       ; If no, skip updating min
+		MOV		r2, r4        ; If yes, update min
+		
+SkipMin
+		ADD		r3, r3, #4    ; Go to the next number in memory (4 bytes ahead)
+		SUB		r9, r9, #1    ; Decrease loop counter r9 by 1
+		B		LoopCheck       ; Repeat the loop
+		
+		
+Done
+		SUB		r5, r1, r2    ; r5 = max - min     r5 contains largest difference
+		
+		MOV		r6, #0x2100   
+		STR		r5, [r6]      ; Store the result at 0x2100
+		;answer	at r5
+		
+		
+		
+		
+		
+		
