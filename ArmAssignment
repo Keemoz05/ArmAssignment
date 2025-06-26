@@ -66,11 +66,22 @@
 		;str		r0, [r8,#12]
 		str		r0, [r8,#20]							;value stored: 1646408499
 		
+		;		move r0,#0x71111111
+		mov		r0,#0x71000000
+		mov		r1,#0x00110000
+		mov		r2,#0x00001100
+		mov		r3,#0x00000011
+		add		r0, r0, r1
+		add		r0, r0, r2
+		add		r0, r0, r3
+		str		r0, [r8,#24]
+		
+		
 		
 		
 		
 		;-----------------------------
-		mov		r9,#6        ; amount of numbers to loop through (10 numbers,so 10 times)
+		mov		r9,#7        ; amount of numbers to loop through
 		mov		r8,#0x1000    ; address of numbers
 		LDR		r0, [r8]      ; loads the first number into r0
 		MOV		r1, r0        ; Set max (r1) = first number
@@ -106,4 +117,9 @@ Done
 		MOV		r6, #0x2100
 		STR		r5, [r6]      ; Store the result at 0x2100
 		;answer	at r5
+		
+		
+		
+		
+		
 		
