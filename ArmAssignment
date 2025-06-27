@@ -4,24 +4,31 @@
 			MOV		r8, #0x1000
 			
 			MOV		r0, #0x1A       ; 26
+			
 			STRB		r0, [r8, #0]
 			
 			MOV		r0, #0x3F         ; 63
+			
 			STRB		r0, [r8, #1]
 			
 			MOV		r0, #0x7D         ; 125
+			
 			STRB		r0, [r8, #2]
 			
 			MOV		r0, #0x05         ; 5
+			
 			STRB		r0, [r8, #3]
 			
 			MOV		r0, #0xB0         ; 176
+			
 			STRB		r0, [r8, #4]
 			
 			MOV		r0, #0x2C         ; 44
+			
 			STRB		r0, [r8, #5]
 			
 			MOV		r0, #0x90         ; 144
+			
 			STRB		r0, [r8, #6]
 			
 			
@@ -85,8 +92,8 @@ InnerLoop
 			CMP		r4, r1
 			BEQ		SkipCompare
 			
-			ADD		r5, r8, r4
-			LDRB		r7, [r5]        ; value[j]
+			ADD		r11, r8, r4
+			LDRB		r7, [r11]        ; value[j]
 			
 			CMP		r3, r7
 			BHI		Sub1
