@@ -1,78 +1,114 @@
-		;Add		this initialization Code at the beginning of your program
-		;data	initialization. 10 random number (4 byte each stored starting from address 0x2000h). These numbers will be
-		;randomly	changed to test the correctness of your program
-		;Put		your name and ID here. Student1 name, student1 ID. ….
-		;StudentN	name, StudentN ID
-		
-		MOV		r8, #0x1000         ; Base address to store 1-byte values
-		
-		;		Initialize 7 bytes of data into memory
-		MOV		r0, #0x1A           ; Example value: 26
-		STRB		r0, [r8, #0]
-		
-		MOV		r0, #0x3F           ; Example value: 63
-		STRB		r0, [r8, #1]
-		
-		MOV		r0, #0x7D           ; Example value: 125
-		STRB		r0, [r8, #2]
-		
-		MOV		r0, #0x05           ; Example value: 5
-		STRB		r0, [r8, #3]
-		
-		MOV		r0, #0xB0           ; Example value: 176
-		STRB		r0, [r8, #4]
-		
-		MOV		r0, #0x2C           ; Example value: 44
-		STRB		r0, [r8, #5]
-		
-		MOV		r0, #0x90           ; Example value: 144
-		STRB		r0, [r8, #6]
-		
-		
-		
-		
-		
-		
-		;-----------------------------
-		mov		r9,#7        ; amount of numbers to loop through
-		mov		r8,#0x1000    ; address of numbers
-		LDRB		r0, [r8]      ; loads the first number into r0
-		MOV		r1, r0        ; Set max (r1) = first number
-		MOV		r2, r0        ; Set min (r2) = first number
-		MOV		r3, #0       ; r3 keeps track of memory offset, (+4 after each loop)
-		
-		
+			
+			
+			;Data	Initialization – store 7 bytes at 0x1000
+			MOV		r8, #0x1000
+			
+			MOV		r0, #0x1A       ; 26
+			STRB		r0, [r8, #0]
+			
+			MOV		r0, #0x3F         ; 63
+			STRB		r0, [r8, #1]
+			
+			MOV		r0, #0x7D         ; 125
+			STRB		r0, [r8, #2]
+			
+			MOV		r0, #0x05         ; 5
+			STRB		r0, [r8, #3]
+			
+			MOV		r0, #0xB0         ; 176
+			STRB		r0, [r8, #4]
+			
+			MOV		r0, #0x2C         ; 44
+			STRB		r0, [r8, #5]
+			
+			MOV		r0, #0x90         ; 144
+			STRB		r0, [r8, #6]
+			
+			
+			
+			;FIND	MAX - MIN DIFFERENCE
+			
+			MOV		r9, #7             ; Number of values
+			MOV		r8, #0x1000
+			LDRB		r0, [r8]
+			MOV		r1, r0             ; Max
+			MOV		r2, r0             ; Min
+			MOV		r3, #0             ; Offset
+			
 LoopCheck
-		CMP		r9, #0        ; Check If the loopcounter, r9 = 0
-		BEQ		Done          ; If yes, jump to end
-		
-		LDRB		r4, [r8, r3]  ; Read number from address = base + offset
-		
-		
-		CMP		r4, r1        ; Is new number > current max?
-		BLS		SkipMax       ; If no, skip updating max
-		MOV		r1, r4        ; If yes, update max r1 value
-		
+			CMP		r9, #0
+			BEQ		Done
+			
+			LDRB		r4, [r8, r3]
+			
+			CMP		r4, r1
+			BLS		SkipMax
+			MOV		r1, r4
+			
 SkipMax
-		CMP		r4, r2        ; Is new number < current min?
-		BHS		SkipMin       ; If no, skip updating min
-		MOV		r2, r4        ; If yes, update min
-		
+			CMP		r4, r2
+			BHS		SkipMin
+			MOV		r2, r4
+			
 SkipMin
-		ADD		r3, r3, #1    ; Go to the next number in memory (4 bytes ahead)
-		SUB		r9, r9, #1    ; Decrease loop counter r9 by 1
-		B		LoopCheck       ; Repeat the loop
-		
-		
+			ADD		r3, r3, #1      ; Move to next byte
+			SUB		r9, r9, #1
+			B		LoopCheck
+			
 Done
-		SUB		r5, r1, r2    ; r5 = max - min     r5 contains largest difference
-		
-		MOV		r6, #0x2100
-		STR		r5, [r6]      ; Store the result at 0x2100
-		;answer	at r5
-		
-		
-		
-		
-		
-		
+			SUB		r5, r1, r2      ; r5 = max - min
+			MOV		r6, #0x2100
+			STR		r5, [r6]        ; Store result
+			
+			
+			
+			;FIND	SMALLEST ABSOLUTE DIFFERENCE
+			
+			MOV		r8, #0x1000        ; Base address
+			LDR		r6, =0x2150        ; Store min diff
+			MOV		r10, #0xFF         ; Initial min diff = 255
+			MOV		r1, #0             ; Outer index
+			
+OuterLoop
+			CMP		r1, #7
+			BEQ		EndProgram
+			
+			ADD		r2, r8, r1
+			LDRB		r3, [r2]        ; value[i]
+			
+			MOV		r4, #0          ; Inner index
+			
+InnerLoop
+			CMP		r4, #7
+			BEQ		NextOuter
+			
+			CMP		r4, r1
+			BEQ		SkipCompare
+			
+			ADD		r5, r8, r4
+			LDRB		r7, [r5]        ; value[j]
+			
+			CMP		r3, r7
+			BHI		Sub1
+			SUB		r9, r7, r3
+			B		CheckMin
+			
+Sub1
+			SUB		r9, r3, r7
+			
+CheckMin
+			CMP		r9, r10
+			BHS		SkipCompare
+			MOV		r10, r9
+			
+SkipCompare
+			ADD		r4, r4, #1
+			B		InnerLoop
+			
+NextOuter
+			ADD		r1, r1, #1
+			B		OuterLoop
+			
+EndProgram
+			STRB		r10, [r6]       ; Save smallest diff
+			
