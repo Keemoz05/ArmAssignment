@@ -1,4 +1,11 @@
-			
+;TC3L TT10L Group 5
+;Amirul Hilman bin Mohd Yazid 242UC244SC
+
+;Chan Chuan Meng 242UC244LR 
+
+;Muhammad Syazrin Muhaimin 242UC244PQ
+
+;Syed Haqeem bin Syed Isa 242UC244DP			
 			
 			;Data	Initialization – store 7 bytes at 0x1000
 			MOV		r8, #0x1000
